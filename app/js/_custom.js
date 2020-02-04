@@ -1,10 +1,22 @@
-"use strict";
+(function (factory) {
+	typeof define === 'function' && define.amd ? define(factory) :
+	factory();
+}(function () { 'use strict';
 
-var _Hello = _interopRequireDefault(require("/Hello.js"));
+	class form {
+	  constructor(array) {
+	    this.params = array;
+	  }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	  consoleLog() {
+	    console.log(this.params);
+	  }
 
-$(function () {
-  var hello = new _Hello["default"]();
-  hello.sayHi('Олег');
-});
+	}
+
+	const newform = new form({
+	  name: 'Jhon'
+	});
+	newform.consoleLog();
+
+}));

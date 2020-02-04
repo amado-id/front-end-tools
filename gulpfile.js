@@ -11,8 +11,9 @@ var gulp         = require('gulp'),
 		responsive   = require('gulp-responsive'),
 		ftp          = require('vinyl-ftp'),
 		gutil        = require('gulp-util' ),
-		babel 			 = require('gulp-babel'),
-		del          = require('del');
+		babel 			 = require('rollup-plugin-babel'),
+		del          = require('del'),
+		rollup       = require('gulp-rollup');
 
 // Local Server
 gulp.task('browser-sync', function() {
@@ -62,10 +63,13 @@ gulp.task('babel', function() {
 	return gulp.src([
 		'app/js/src/_custom.js'
 	])
-	.pipe(babel({
-		presets: [
-			require("@babel/preset-env"),
-		],
+	.pipe(rollup({
+		allowRealFiles: true,
+		input: './app/js/src/_custom.js',
+		format: 'umd',
+		plugins: [
+			babel()
+		]
 	}))
 	.pipe(gulp.dest('app/js/'))
 });
@@ -159,8 +163,7 @@ gulp.task('push', gulp.series('dist', 'deploy'));
 
 gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('styles'));
-	gulp.watch(['app/js/src/**/*.js'], gulp.parallel('babel'));
-	gulp.watch(['app/js/_*.js'], gulp.parallel('scripts'));
+	gulp.watch(['app/js/src/**/*.js'], gulp.series('babel', 'scripts'));
 	gulp.watch('app/*.html', gulp.parallel('code'));
 	gulp.watch('app/img/_src/**/*', gulp.parallel('img'));
 });

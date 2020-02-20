@@ -1,0 +1,14 @@
+doctype html
+html(lang='ru')
+	include ../components/header.pug
+		h1 Hello World
+
+		each val in ['Кнопка1', 'Кнопка2', 'Кнопка3', 'Кнопка4']
+			- var text = val
+			- var type = 'button'
+			include ../components/button.pug
+		
+		.example-div#example-div Text inside example div
+			| more text inside example div
+
+		include ../components/footer.pug

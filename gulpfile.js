@@ -13,8 +13,7 @@ var gulp         = require('gulp'),
 		gutil        = require('gulp-util' ),
 		babel 			 = require('rollup-plugin-babel'),
 		del          = require('del'),
-		rollup       = require('gulp-rollup'),
-		pug          = require('gulp-pug');
+		rollup       = require('gulp-rollup');
 
 // Local Server
 gulp.task('browser-sync', function() {
@@ -28,16 +27,6 @@ gulp.task('browser-sync', function() {
 	})
 });
 function bsReload(done) { browserSync.reload(); done(); };
-
-// Pug
-gulp.task('pug', function() {
-  return gulp.src('app/pug/pages/*.pug')
-	.pipe(pug({
-		pretty: true
-	}))
-	.pipe(gulp.dest('app/'))
-	.pipe(browserSync.stream())
-});
 
 // Custom Styles
 gulp.task('styles', function() {
@@ -79,7 +68,9 @@ gulp.task('babel', function() {
 		input: './app/js/src/_custom.js',
 		format: 'umd',
 		plugins: [
-			babel()
+			babel({
+				presets: [['@babel/env', { modules: false }]],
+			})
 		]
 	}))
 	.pipe(gulp.dest('app/js/'))
@@ -176,7 +167,6 @@ gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('styles'));
 	gulp.watch(['app/js/src/**/*.js'], gulp.series('babel', 'scripts'));
 	gulp.watch('app/*.html', gulp.parallel('code'));
-	gulp.watch('app/pug/**/*.pug', gulp.parallel('pug'));
 	gulp.watch('app/img/_src/**/*', gulp.parallel('img'));
 });
 

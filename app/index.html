@@ -1,20 +1,693 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <title>Template</title>
-    <link rel="stylesheet" href="./css/styles.min.css">
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <header class="header"></header>
-    <h1>Hello World</h1>
-    <button class="button">Кнопка1</button>
-    <button class="button">Кнопка2</button>
-    <button class="button">Кнопка3</button>
-    <button class="button">Кнопка4</button>
-    <div class="example-div" id="example-div">
-      Text inside example divmore text inside example div</div>
-    <footer class="footer"></footer>
-    <script src="./js/scripts.min.js"></script>
-  </body>
+
+<head>
+  <title>Медицинский центр ЧТПЗ</title>
+  <link rel="stylesheet" href="./css/styles.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+  <div class="am-container">
+    <form action="" class="am-form" novalidate>
+      <!-- Прогресс заполнения -->
+      <div class="am-form-progress">
+        <div class="am-form-progress__steps">
+          <span class="am-form-progress__step am-form-progress__step_active" data-step="1">Выбор услуги</span>
+          <span class="am-form-progress__step" data-step="2">Дата и время</span>
+          <span class="am-form-progress__step" data-step="3">Ваши контакты</span>
+          <span class="am-form-progress__step" data-step="4">Подтверждение</span>
+        </div>
+      </div>
+      <!-- END Прогресс заполнения -->
+
+      <!-- Шаг 1 -->
+      <div class="am-form-one am-form__step_active am-form__step" data-step="1">
+        <div class="am-form-one__tabs">
+          <button class="am-form-one__tab am-form-one__tab_active" data-tab="1" type="button" data-poly="adult">Взрослая
+            поликлиника</button>
+          <button class="am-form-one__tab" data-tab="1" type="button" data-poly="child">Детская поликлиника</button>
+          <button class="am-form-one__tab" data-tab="3" type="button">Вызов врача на дом</button>
+        </div>
+
+        <div class="am-form-one__content am-form-one__content_active" data-tab="1">
+          <h3 class="am-form-one__pay-title">Способ оплаты</h3>
+          <div class="am-form-one__pay">
+            <div class="am-form-one__pay-method">
+              <label class="am-form-one__label">
+                <input type="radio" name="pay-method" value="Оплата в клинике при посещении"
+                  class="am-form-one__checkbox" checked>
+                <span class="am-form-one__label-text">Оплата в клинике при посещении</span>
+              </label>
+            </div>
+            <div class="am-form-one__pay-method">
+              <label class="am-form-one__label">
+                <input type="radio" name="pay-method" value="Оплата онлайн" class="am-form-one__checkbox">
+                <span class="am-form-one__label-text">Оплата онлайн</span>
+              </label>
+            </div>
+            <div class="am-form-one__pay-method">
+              <label class="am-form-one__label">
+                <input type="radio" name="pay-method" value="ДМС" class="am-form-one__checkbox">
+                <span class="am-form-one__label-text">ДМС</span>
+              </label>
+              <button type="button" class="am-form-one__pay-question">?</button>
+              <div class="am-form-one__pay-help"><span>Всплывающая плашка с текстом пояснением к способу оплаты</span>
+              </div>
+            </div>
+            <div class="am-form-one__pay-method">
+              <label class="am-form-one__label">
+                <input type="radio" name="pay-method" value="Группа ЧТПЗ" class="am-form-one__checkbox">
+                <span class="am-form-one__label-text">Группа ЧТПЗ</span>
+              </label>
+              <button type="button" class="am-form-one__pay-question">?</button>
+              <div class="am-form-one__pay-help">Всплывающая плашка с текстом пояснением к способу оплаты</div>
+            </div>
+          </div>
+
+          <div class="am-form-one__category">
+            <h3 class="am-form-one__category-title">Выберите категорию услуг, врача или направление</h3>
+            <div class="am-form-one__place">
+              <input type="hidden" class="am-form-one__place-input" value="Все филиалы" name="filial"
+                data-input="filial">
+              <button type="button" class="am-form-one__place-button" data-input="filial">Все филиалы</button>
+              <ul class="am-form-one__place-list">
+                <li class="am-form-one__place-item">Поликлиника на Новороссийской</li>
+                <li class="am-form-one__place-item">Поликлиника на Каслинской</li>
+                <li class="am-form-one__place-item">Центр реабилитации «Парк Здоровья»</li>
+                <li class="am-form-one__place-item">Поликлинника в Первоуральске</li>
+                <li class="am-form-one__place-item">Наркология на Каслинской</li>
+                <li class="am-form-one__place-item">Центр реабилитации «Парк Здоровья»</li>
+              </ul>
+            </div>
+            <div class="am-form-one__date">
+              <input type="hidden" class="am-form-one__date-input" value="Любая дата" data-input="period" name="period">
+              <button class="am-form-one__date-button" type="button" data-input="period">Любая дата</button>
+              <div class="am-form-one__date-container"></div>
+            </div>
+            <div class="am-form-one__category-block">
+              <input type="text" value="" class="am-form-one__category-input"
+                placeholder="Введите услугу, врача или направление" name="category">
+              <ul class="am-form-one__category-list">
+                <li class="am-form-one__category-group" data-category="1">
+                  <span class="am-form-one__category-type">Специальности</span>
+                  <ul class="am-form-one__category-sublist">
+                    <li class="am-form-one__category-item">
+                      <span class="am-form-one__category-name">Анестезиолог-реаниматолог</span>
+                    </li>
+                    <li class="am-form-one__category-item">
+                      <span class="am-form-one__category-name">Гематолог</span>
+                    </li>
+                    <li class="am-form-one__category-item">
+                      <span class="am-form-one__category-name">Дерматолог</span>
+                    </li>
+                    <li class="am-form-one__category-item">
+                      <span class="am-form-one__category-name">Массаж</span>
+                    </li>
+                    <li class="am-form-one__category-item">
+                      <span class="am-form-one__category-name">Онколог</span>
+                    </li>
+                  </ul>
+                </li>
+                <li class="am-form-one__category-group" data-category="2">
+                  <span class="am-form-one__category-type">Специалисты</span>
+                  <ul class="am-form-one__category-sublist">
+                    <li class="am-form-one__category-item">
+                      <span class="am-form-one__category-name">Андреева Марина Сергеевна</span>
+                      <span class="am-form-one__category-desc">Врач-терапевт первой квалификационной категории</span>
+                    </li>
+                    <li class="am-form-one__category-item">
+                      <span class="am-form-one__category-name">Бычкова Марина Владимировна</span>
+                      <span class="am-form-one__category-desc">Врач-терапевт первой квалификационной категории</span>
+                    </li>
+                    <li class="am-form-one__category-item">
+                      <span class="am-form-one__category-name">Андреева Марина Сергеевна</span>
+                      <span class="am-form-one__category-desc">Врач-терапевт первой квалификационной категории</span>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="am-form-one__specialists am-form-one__categories" data-category="1">
+            <input type="hidden" name="price" data-input="price">
+            <input type="hidden" name="service" data-input="service">
+            <h3 class="am-form-one__specialists-title">Выберите специалиста</h3>
+            <ul class="am-form-one__specialists-items">
+              <li class="am-form-one__specialists-item am-form-one__specialists-item_active">
+                <div class="am-form-one__specialists-top">
+                  <span class="am-form-one__specialists-name">Любой врач</span>
+                  <span class="am-form-one__specialists-service">Ультразвуковая диагностика (УЗИ)</span>
+                </div>
+                <div class="am-form-one__specialists-bottom">
+                  <label class="am-form-one__specialists-label">
+                    <input class="am-form-one__specialists-radio" type="radio" name="specialist" checked
+                      value="Любой врач" data-input="name">
+                    <span class="am-form-one__specialists-select">Выбрать</span>
+                  </label>
+                </div>
+              </li>
+              <li class="am-form-one__specialists-item">
+                <div class="am-form-one__specialists-top">
+                  <div class="am-form-one__specialists-img" style="background-image: url(./img/spec-1.png);"></div>
+                  <span class="am-form-one__specialists-family">Кравченко</span>
+                  <span class="am-form-one__specialists-name">Антон Николаевич</span>
+                  <span class="am-form-one__specialists-post">Главный врач</span>
+                  <span class="am-form-one__specialists-service">Ультразвуковая диагностика (не УЗИ)</span>
+                </div>
+                <div class="am-form-one__specialists-bottom">
+                  <span class="am-form-one__specialists-price">1 500 руб.</span>
+                  <a href="" class="am-form-one__specialists-detail">Подробнее о враче</a>
+                  <label class="am-form-one__specialists-label">
+                    <input class="am-form-one__specialists-radio" type="radio" name="specialist"
+                      value="Кравченко Антон Николаевич" data-input="name">
+                    <span class="am-form-one__specialists-select">Выбрать</span>
+                  </label>
+                </div>
+              </li>
+              <li class="am-form-one__specialists-item">
+                <div class="am-form-one__specialists-top">
+                  <div class="am-form-one__specialists-img" style="background-image: url(./img/spec-1.png);"></div>
+                  <span class="am-form-one__specialists-family">Кравченко</span>
+                  <span class="am-form-one__specialists-name">Антон Николаевич</span>
+                  <span class="am-form-one__specialists-post">Главный врач</span>
+                  <span class="am-form-one__specialists-service">Ультразвуковая диагностика (УЗИ) </span>
+                </div>
+                <div class="am-form-one__specialists-bottom">
+                  <span class="am-form-one__specialists-price">1 500 руб.</span>
+                  <a href="" class="am-form-one__specialists-detail">Подробнее о враче</a>
+                  <label class="am-form-one__specialists-label">
+                    <input class="am-form-one__specialists-radio" type="radio" name="specialist" value="Кравченко Антон Николаевич" data-input="name">
+                    <span class="am-form-one__specialists-select">Выбрать</span>
+                  </label>
+                </div>
+              </li>
+              <li class="am-form-one__specialists-item am-form-one__specialists-item_other">
+                <div class="am-form-one__specialists-message">
+                  Обратите внимание, врач ведет прием только в поликлинике на Каслинской.
+                </div>
+                <div class="am-form-one__specialists-top">
+                  <div class="am-form-one__specialists-img" style="background-image: url(./img/spec-1.png);"></div>
+                  <span class="am-form-one__specialists-family">Кравченко</span>
+                  <span class="am-form-one__specialists-name">Антон Николаевич</span>
+                  <span class="am-form-one__specialists-post">Главный врач</span>
+                  <span class="am-form-one__specialists-service">Ультразвуковая диагностика (УЗИ) </span>
+                </div>
+                <div class="am-form-one__specialists-bottom">
+                  <span class="am-form-one__specialists-price">1 500 руб.</span>
+                  <a href="" class="am-form-one__specialists-detail">Подробнее о враче</a>
+                  <label class="am-form-one__specialists-label">
+                    <input class="am-form-one__specialists-radio" type="radio" name="specialist" value="Кравченко Антон Николаевич" data-input="name">
+                    <span class="am-form-one__specialists-select">Выбрать</span>
+                  </label>
+                </div>
+              </li>
+              <li class="am-form-one__specialists-item">
+                <div class="am-form-one__specialists-top">
+                  <div class="am-form-one__specialists-img" style="background-image: url(./img/spec-1.png);"></div>
+                  <span class="am-form-one__specialists-family">Кравченко</span>
+                  <span class="am-form-one__specialists-name">Антон Николаевич</span>
+                  <span class="am-form-one__specialists-post">Главный врач</span>
+                  <span class="am-form-one__specialists-service">Ультразвуковая диагностика (УЗИ)</span>
+                </div>
+                <div class="am-form-one__specialists-bottom">
+                  <span class="am-form-one__specialists-price">1 500 руб.</span>
+                  <a href="" class="am-form-one__specialists-detail">Подробнее о враче</a>
+                  <label class="am-form-one__specialists-label">
+                    <input class="am-form-one__specialists-radio" type="radio" name="specialist" value="Кравченко Антон Николаевич" data-input="name">
+                    <span class="am-form-one__specialists-select">Выбрать</span>
+                  </label>
+                </div>
+              </li>
+              <li class="am-form-one__specialists-item">
+                <div class="am-form-one__specialists-top">
+                  <div class="am-form-one__specialists-img" style="background-image: url(./img/spec-1.png);"></div>
+                  <span class="am-form-one__specialists-family">Кравченко</span>
+                  <span class="am-form-one__specialists-name">Антон Николаевич</span>
+                  <span class="am-form-one__specialists-post">Главный врач</span>
+                  <span class="am-form-one__specialists-service">Ультразвуковая диагностика (УЗИ) </span>
+                </div>
+                <div class="am-form-one__specialists-bottom">
+                  <span class="am-form-one__specialists-price">1 500 руб.</span>
+                  <a href="" class="am-form-one__specialists-detail">Подробнее о враче</a>
+                  <label class="am-form-one__specialists-label">
+                    <input class="am-form-one__specialists-radio" type="radio" name="specialist" value="Кравченко Антон Николаевич" data-input="name">
+                    <span class="am-form-one__specialists-select">Выбрать</span>
+                  </label>
+                </div>
+              </li>
+              <li class="am-form-one__specialists-item am-form-one__specialists-item_other">
+                <div class="am-form-one__specialists-message">
+                  Обратите внимание, врач ведет прием только в поликлинике на Каслинской.
+                </div>
+                <div class="am-form-one__specialists-top">
+                  <div class="am-form-one__specialists-img" style="background-image: url(./img/spec-1.png);"></div>
+                  <span class="am-form-one__specialists-family">Кравченко</span>
+                  <span class="am-form-one__specialists-name">Антон Николаевич</span>
+                  <span class="am-form-one__specialists-post">Главный врач</span>
+                  <span class="am-form-one__specialists-service">Ультразвуковая диагностика (УЗИ) </span>
+                </div>
+                <div class="am-form-one__specialists-bottom">
+                  <span class="am-form-one__specialists-price">1 500 руб.</span>
+                  <a href="" class="am-form-one__specialists-detail">Подробнее о враче</a>
+                  <label class="am-form-one__specialists-label">
+                    <input class="am-form-one__specialists-radio" type="radio" name="specialist" value="Кравченко Антон Николаевич" data-input="name">
+                    <span class="am-form-one__specialists-select">Выбрать</span>
+                  </label>
+                </div>
+              </li>
+            </ul>
+            <div class="am-form-one__specialists-all">
+              <button type="button" class="am-form-one__specialists-link">Все специалисты</button>
+            </div>
+            <button type="button" class="am-form__next am-button">Выбрать дату и время</button>
+          </div>
+          <div class="am-form-one__services am-form-one__categories" data-category="2">
+            <input type="hidden" name="name" data-input="name">
+            <input type="hidden" name="post" data-input="post">
+            <input type="hidden" name="price" data-input="price">
+            <h3 class="am-form-one__services-title">Выберите услугу</h3>
+            <ul class="am-form-one__services-list">
+              <li class="am-form-one__services-item">
+                <label class="am-form-one__services-label">
+                  <input type="radio" class="am-form-one__services-radio" value="Ультразвуковая диагностика (УЗИ)"
+                    name="radio-service" checked data-input="service">
+                  <div class="am-form-one__services-content">
+                    <span class="am-form-one__services-name">Ультразвуковая диагностика (УЗИ)</span>
+                    <span class="am-form-one__services-price">1 500 руб.</span>
+                  </div>
+                </label>
+              </li>
+              <li class="am-form-one__services-item">
+                <label class="am-form-one__services-label">
+                  <input type="radio" class="am-form-one__services-radio" value="Прием терапевта" name="radio-service"
+                    data-input="service">
+                  <div class="am-form-one__services-content">
+                    <span class="am-form-one__services-name">Прием терапевта</span>
+                    <span class="am-form-one__services-price">1100 руб.</span>
+                  </div>
+                </label>
+              </li>
+              <li class="am-form-one__services-item">
+                <label class="am-form-one__services-label">
+                  <input type="radio" class="am-form-one__services-radio" value="Прием педиатра" name="radio-service"
+                    data-input="service">
+                  <div class="am-form-one__services-content">
+                    <span class="am-form-one__services-name">Прием педиатра</span>
+                    <span class="am-form-one__services-price">900 руб.</span>
+                  </div>
+                </label>
+              </li>
+              <li class="am-form-one__services-item">
+                <label class="am-form-one__services-label">
+                  <input type="radio" class="am-form-one__services-radio" value="Прием аллерголога" name="radio-service"
+                    data-input="service">
+                  <div class="am-form-one__services-content">
+                    <span class="am-form-one__services-name">Прием аллерголога</span>
+                    <span class="am-form-one__services-price">900 руб.</span>
+                  </div>
+                </label>
+              </li>
+              <li class="am-form-one__services-item">
+                <label class="am-form-one__services-label">
+                  <input type="radio" class="am-form-one__services-radio" value="Ультразвуковая диагностика (УЗИ)"
+                    name="radio-service" data-input="service">
+                  <div class="am-form-one__services-content">
+                    <span class="am-form-one__services-name">Ультразвуковая диагностика (УЗИ)</span>
+                    <span class="am-form-one__services-price">1 500 руб.</span>
+                  </div>
+                </label>
+              </li>
+              <li class="am-form-one__services-item">
+                <label class="am-form-one__services-label">
+                  <input type="radio" class="am-form-one__services-radio" value="Прием терапевта" name="radio-service"
+                    data-input="service">
+                  <div class="am-form-one__services-content">
+                    <span class="am-form-one__services-name">Прием терапевта</span>
+                    <span class="am-form-one__services-price">1100 руб.</span>
+                  </div>
+                </label>
+              </li>
+              <li class="am-form-one__services-item">
+                <label class="am-form-one__services-label">
+                  <input type="radio" class="am-form-one__services-radio" value="Прием педиатра" name="radio-service"
+                    data-input="service">
+                  <div class="am-form-one__services-content">
+                    <span class="am-form-one__services-name">Прием педиатра</span>
+                    <span class="am-form-one__services-price">900 руб.</span>
+                  </div>
+                </label>
+              </li>
+              <li class="am-form-one__services-item">
+                <label class="am-form-one__services-label">
+                  <input type="radio" class="am-form-one__services-radio" value="Прием аллерголога" name="radio-service"
+                    data-input="service">
+                  <div class="am-form-one__services-content">
+                    <span class="am-form-one__services-name">Прием аллерголога</span>
+                    <span class="am-form-one__services-price">900 руб.</span>
+                  </div>
+                </label>
+              </li>
+            </ul>
+            <div class="am-form-one__services-all">
+              <button type="button" class="am-form-one__services-link">Все услуги</button>
+            </div>
+            <button type="button" class="am-form__next am-button">Выбрать дату и время</button>
+          </div>
+        </div>
+        <div class="am-form-one__content" data-tab="3">
+          <input type="hidden" name="poly" value="Вызов врача на дом">
+
+          <p class="am-form-one__home">
+            Вызов врача на дом возможен только по телефону <a href="tel:+73512100303">+7 (351) 210-03-03</a>
+          </p>
+        </div>
+      </div>
+      <!-- END Шаг 1 -->
+
+      <!-- Шаг 2 -->
+      <div class="am-form-two am-form__step" data-step="2">
+        <div class="am-form__info">
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Филиал</span>
+            <span class="am-form__info-text" data-input="filial">Любой филиал</span>
+            <a href="" class="am-form__info-link">Как добраться</a>
+          </div>
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Услуга</span>
+            <span class="am-form__info-text" data-input="service">Ультразвуковая диагностика (УЗИ)</span>
+          </div>
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Врач</span>
+            <span class="am-form__info-text" data-input="name">Кравченко Антон Николаевич</span>
+            <span class="am-form__info-desc" data-input="post">Главный врач</span>
+          </div>
+        </div>
+
+        <div class="am-form-two__content">
+          <div class="am-form-two__date">
+            <h3 class="am-form-two__date-title">Выбор даты</h3>
+            <div class="am-form-two__other">
+              <span class="am-form-two__other-text">В филиале «Поликлиника на Каслинской» на данную услугу доступны более ранние даты.</span>
+              <button class="am-form-two__other-button" type="button">Показать</button>
+            </div>
+            <input type="text" class="am-form-two__date-input" name="date" data-input="date">
+            <div class="am-form-two__date-container"></div>
+          </div>
+          <div class="am-form-two__time">
+            <h3 class="am-form-two__time-title">Выбор времени</h3>
+            <ul class="am-form-two__time-list">
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 09:00 до 10:00">
+                  <span class="am-form-two__time-text">с 09:00 до 10:00</span>
+                </label>
+              </li>
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 10:00 до 11:00">
+                  <span class="am-form-two__time-text">с 10:00 до 11:00</span>
+                </label>
+              </li>
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 11:00 до 12:00" disabled>
+                  <span class="am-form-two__time-text">с 11:00 до 12:00</span>
+                </label>
+              </li>
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 12:00 до 13:00">
+                  <span class="am-form-two__time-text">с 12:00 до 13:00</span>
+                </label>
+              </li>
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 13:00 до 14:00">
+                  <span class="am-form-two__time-text">с 13:00 до 14:00</span>
+                </label>
+              </li>
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 14:00 до 15:00">
+                  <span class="am-form-two__time-text">с 14:00 до 15:00</span>
+                </label>
+              </li>
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 15:00 до 16:00">
+                  <span class="am-form-two__time-text">с 15:00 до 16:00</span>
+                </label>
+              </li>
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 16:00 до 17:00">
+                  <span class="am-form-two__time-text">с 16:00 до 17:00</span>
+                </label>
+              </li>
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 17:00 до 18:00">
+                  <span class="am-form-two__time-text">с 17:00 до 18:00</span>
+                </label>
+              </li>
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 18:00 до 19:00">
+                  <span class="am-form-two__time-text">с 18:00 до 19:00</span>
+                </label>
+              </li>
+              <li class="am-form-two__time-item">
+                <label class="am-form-two__time-label">
+                  <input type="radio" class="am-form-two__time-checkbox" name="time" data-input="time"
+                    value="с 19:00 до 20:00">
+                  <span class="am-form-two__time-text">с 19:00 до 20:00</span>
+                </label>
+              </li>
+            </ul>
+            <div class="am-form-two__time-notice">
+              Выберите время приема
+            </div>
+            <div class="am-form-two__date-notice">
+              Выберите дату приема
+            </div>
+            <div class="am-form__nav am-form-two__nav">
+              <button type="button" class="am-form__prev am-button am-button_transparent">Назад</button>
+              <button type="button" class="am-form__next am-button">Вперед</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END Шаг 2 -->
+
+      <!-- Шаг 3 -->
+      <div class="am-form-three am-form__step" data-step="3">
+        <div class="am-form__info am-form__info_big">
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Филиал</span>
+            <span class="am-form__info-text" data-input="filial">Любой филиал</span>
+            <a href="" class="am-form__info-link">Как добраться</a>
+          </div>
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Дата и время</span>
+            <span class="am-form__info-text" data-input="date"></span>
+            <span class="am-form__info-text" data-input="time"></span>
+          </div>
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Услуга</span>
+            <span class="am-form__info-text" data-input="service">Ультразвуковая диагностика (УЗИ)</span>
+          </div>
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Врач</span>
+            <span class="am-form__info-text" data-input="name">Кравченко Антон Николаевич</span>
+            <span class="am-form__info-desc" data-input="post">Главный врач</span>
+          </div>
+        </div>
+
+        <div class="am-form-three__inputs" data-poly="child">
+          <h3 class="am-form-three__title">Контактное лицо</h3>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="text" class="am-form-three__inputs-input am-input" name="contact-family" required>
+            <div class="am-form-three__inputs-placeholder">Фамилия <b>*</b></div>
+          </div>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="text" class="am-form-three__inputs-input am-input" name="contact-name" required>
+            <div class="am-form-three__inputs-placeholder">Имя <b>*</b></div>
+          </div>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="text" class="am-form-three__inputs-input am-input" name="contact-otch" required>
+            <div class="am-form-three__inputs-placeholder">Отчество <b>*</b></div>
+          </div>
+          <div class="am-form-three__inputs-wrap">
+            <input type="phone" data-type="phone" class="am-form-three__inputs-input am-input" name="contact-phone" required>
+            <div class="am-form-three__inputs-placeholder">Телефон <b>*</b></div>
+          </div>
+
+          <h3 class="am-form-three__title">Пациент</h3>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="text" class="am-form-three__inputs-input am-input" name="pacient-family" data-input="pacient-family" required>
+            <div class="am-form-three__inputs-placeholder">Фамилия <b>*</b></div>
+          </div>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="text" class="am-form-three__inputs-input am-input" name="pacient-name" data-input="pacient-name" required>
+            <div class="am-form-three__inputs-placeholder">Имя <b>*</b></div>
+          </div>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="text" class="am-form-three__inputs-input am-input" name="pacient-otch" data-input="pacient-otch" required>
+            <div class="am-form-three__inputs-placeholder">Отчество <b>*</b></div>
+          </div>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="date" class="am-form-three__inputs-input am-input" name="pacient-date" required>
+            <div class="am-form-three__inputs-placeholder">Дата рождения <b>*</b></div>
+          </div>
+        </div>
+
+        <div class="am-form-three__inputs" data-poly="adult">
+          <h3 class="am-form-three__title">Пациент</h3>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="text" class="am-form-three__inputs-input am-input" name="pacient-family" data-input="pacient-family" required>
+            <div class="am-form-three__inputs-placeholder">Фамилия <b>*</b></div>
+          </div>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="text" class="am-form-three__inputs-input am-input" name="pacient-name" data-input="pacient-name" required>
+            <div class="am-form-three__inputs-placeholder">Имя <b>*</b></div>
+          </div>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="text" class="am-form-three__inputs-input am-input" name="pacient-otch" data-input="pacient-otch" required>
+            <div class="am-form-three__inputs-placeholder">Отчество <b>*</b></div>
+          </div>
+          <div class="am-form-three__inputs-wrap">
+            <input type="text" data-type="date" class="am-form-three__inputs-input am-input" name="pacient-date" required>
+            <div class="am-form-three__inputs-placeholder">Дата рождения <b>*</b></div>
+          </div>
+          <div class="am-form-three__inputs-wrap">
+            <input type="phone" data-type="phone" class="am-form-three__inputs-input am-input" name="contact-phone" required>
+            <div class="am-form-three__inputs-placeholder">Телефон пациента или контактного лица <b>*</b></div>
+          </div>
+        </div>
+
+        <h3 class="am-form-three__title">Прочее</h3>
+        <div class="am-form-three__inputs-wrap">
+          <input type="text" data-type="text" class="am-form-three__inputs-input am-input" name="bonuce">
+          <div class="am-form-three__inputs-placeholder">Номер бонусной карты</div>
+        </div>
+        <textarea name="comment" placeholder="Комментарий" class="am-textarea"></textarea>
+
+        <h3 class="am-form-three__title">Способ оплаты</h3>
+        <div class="am-form-three__pay">
+          <div class="am-form-three__pay-method">
+            <label class="am-form-three__label">
+              <input type="radio" name="pay" value="Оплата в клинике при посещении" class="am-form-three__checkbox"
+                checked>
+              <span class="am-form-three__label-text">Оплата в клинике при посещении</span>
+            </label>
+          </div>
+          <div class="am-form-three__pay-method">
+            <label class="am-form-three__label">
+              <input type="radio" name="pay" value="Оплата онлайн" class="am-form-three__checkbox">
+              <span class="am-form-three__label-text">Оплата онлайн</span>
+            </label>
+            <div class="am-form-three__pay-help">
+              <button class="am-form-three__pay-close" type="button"></button>
+              Выберите другой способ оплаты или повторите попытку.
+            </div>
+          </div>
+        </div>
+
+        <label class="am-form-three__personal">
+          <input type="checkbox" class="am-form-three__personal-checkbox">
+          <span class="am-form-three__personal-text">Даю согласие на обработку &nbsp;<a href="" target="_blank">персональных
+              данных</a></span>
+        </label>
+
+        <div class="am-form__nav am-form-three__nav">
+          <button type="button" class="am-form__prev am-button am-button_transparent">Назад</button>
+          <button type="button" class="am-form__next am-button">Подтвердить запись</button>
+        </div>
+      </div>
+      <!-- END Шаг 3 -->
+
+      <!-- Подтверждение -->
+      <div class="am-form-confirm am-form__step" data-step="4">
+        <span class="am-form-confirm__title">Проверьте правильность данных</span>
+
+        <div class="am-form__info am-form__info_light">
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Филиал</span>
+            <span class="am-form__info-text" data-input="filial">Любой филиал</span>
+            <a href="" class="am-form__info-link">Как добраться</a>
+          </div>
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Дата и время</span>
+            <span class="am-form__info-text" data-input="date"></span>
+            <span class="am-form__info-text" data-input="time"></span>
+          </div>
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Услуга</span>
+            <span class="am-form__info-text" data-input="service">Ультразвуковая диагностика (УЗИ)</span>
+          </div>
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Врач</span>
+            <span class="am-form__info-text" data-input="name">Кравченко Антон Николаевич</span>
+            <span class="am-form__info-desc" data-input="post">Главный врач</span>
+          </div>
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Пациент</span>
+            <span class="am-form__info-text">
+              <span data-input="pacient-family"></span>
+              <span data-input="pacient-name"></span>
+              <span data-input="pacient-otch"></span>
+            </span>
+          </div>
+          <div class="am-form__info-col">
+            <span class="am-form__info-title">Стоимость</span>
+            <span class="am-form__info-text" data-input="price">-</span>
+          </div>
+        </div>
+
+        <p class="am-form-confirm__text">При посещении клиники не забудьте взять с собой паспорт родителя, свидетельство
+          о рождении ребенка (до 14
+          лет), паспорт ребенка (14 лет и старше). Если ребенок приходит на прием с опекуном, то необходимы документы об
+          опекунстве. Если в сопровождении иных взрослых (бабушка, дедушка, тетя, дядя и др.), то родителям необходимо
+          предварительно оформить доверенность в регистратуре клиники.</p>
+        <p class="am-form-confirm__text">Заявка на прием будет проверена и подтверждена оператором по указанному
+          телефону. Как вам удобно, чтобы мы
+          напомнили вам о записи на прием?</p>
+
+        <div class="am-form-three__pay am-form-confirm__radio">
+          <div class="am-form-three__pay-method">
+            <label class="am-form-three__label">
+              <input type="radio" name="confirm" value="SMS" class="am-form-three__checkbox"
+                checked>
+              <span class="am-form-three__label-text">SMS</span>
+            </label>
+          </div>
+          <div class="am-form-three__pay-method">
+            <label class="am-form-three__label">
+              <input type="radio" name="confirm" value="Звонок оператора" class="am-form-three__checkbox">
+              <span class="am-form-three__label-text">Звонок оператора</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="am-button am-form-confirm__submit">Подтвердить</button>
+      </div>
+      <!-- END Подтверждение -->
+    </form>
+  </div>
+
+  <script src="./js/scripts.min.js"></script>
+</body>
+
 </html>

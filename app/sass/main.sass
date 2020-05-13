@@ -1,6 +1,7 @@
 @import vars
 @import fonts
 @import libs
+@import imports
 
 ::placeholder
 	color: #666
@@ -9,21 +10,39 @@
 	background-color: $accent
 	color: #fff
 
-input, textarea
-	outline: none
-	&:focus:required:invalid
-		border-color: red
-	&:required:valid
-		border-color: green
-
 body
-	font-size: 16px
 	min-width: 320px
-	position: relative
-	line-height: 1.65
-	font-family: 'Roboto', sans-serif
-	overflow-x: hidden
-	color: $text
 
+.am-container
+	max-width: 1200px
+	width: 100%
+	margin: 0 auto
+	font-family: 'ProbaProRegular', sans-serif
+	box-sizing: border-box
+	*
+		box-sizing: border-box
+		outline: none
+	h3
+		font-size: 20px
+		font-weight: 500
+		line-height: 24px
+		color: #222222
+	input:not([type=checkbox]):not([type=radio]),
+	textarea, 
+	select
+		-webkit-appearance: none
+		-moz-appearance: none
+		appearance: none
 
+@media screen and ( max-width: 1270px )
+	.am-container
+		max-width: 100%
+		padding: 0 35px
 
+@media screen and ( max-width: 991px )
+	.am-container
+		padding: 0 25px
+
+@media screen and ( max-width: 560px )
+	.am-container
+		padding: 0 10px

@@ -195,6 +195,12 @@
 
 	    document.querySelectorAll('.am-form-one__pay-question').forEach(function (item) {
 	      item.addEventListener('click', function () {
+	        if (document.querySelector('.am-form-one__pay-help_active')) {
+	          document.querySelectorAll('.am-form-one__pay-help_active').forEach(function (item) {
+	            return item.classList.remove('am-form-one__pay-help_active');
+	          });
+	        }
+
 	        this.nextElementSibling.classList.toggle('am-form-one__pay-help_active');
 	      });
 	    }); // Закрытие всплывающих окон при клике вне
@@ -219,11 +225,29 @@
 	      this.nextElementSibling.classList.add('am-form-one__category-list_open');
 	    }); // Открытие/закрытие списка при вводе в инпут
 
+	    var variablesList = document.querySelectorAll('.am-form-one__category-item');
 	    document.querySelector('.am-form-one__category-input').addEventListener('input', function () {
-	      if (this.value.length) {
-	        this.nextElementSibling.classList.add('am-form-one__category-list_open');
-	      } else {
-	        this.nextElementSibling.classList.remove('am-form-one__category-list_open');
+	      try {
+	        var value = this.value;
+
+	        if (value.length >= 3) {
+	          this.nextElementSibling.classList.add('am-form-one__category-list_open'); // Автокомплит
+
+	          var regExp = new RegExp(value);
+	          variablesList.forEach(function (item) {
+	            item.style.cssText = '';
+
+	            if (!item.children[0].innerHTML.match(regExp)) {
+	              item.style.display = 'none';
+	            }
+	          });
+	        } else {
+	          variablesList.forEach(function (item) {
+	            item.style.cssText = '';
+	          });
+	        }
+	      } catch (e) {
+	        console.log(e);
 	      }
 	    }); // Скролл в списке
 

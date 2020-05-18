@@ -53,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		// Всплывающие подсказки в выборе оплаты
 		document.querySelectorAll('.am-form-one__pay-question').forEach(item => {
 			item.addEventListener('click', function () {
+				if (document.querySelector('.am-form-one__pay-help_active')) {
+					document.querySelectorAll('.am-form-one__pay-help_active').forEach(item => item.classList.remove('am-form-one__pay-help_active'))
+				}
 				this.nextElementSibling.classList.toggle('am-form-one__pay-help_active');
 			});
 		})
@@ -78,11 +81,31 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 
 		// Открытие/закрытие списка при вводе в инпут
+		const variablesList = document.querySelectorAll('.am-form-one__category-item');
 		document.querySelector('.am-form-one__category-input').addEventListener('input', function () {
-			if (this.value.length) {
-				this.nextElementSibling.classList.add('am-form-one__category-list_open')
-			} else {
-				this.nextElementSibling.classList.remove('am-form-one__category-list_open')
+			try {
+				const value = this.value;
+
+				if (value.length >= 3) {
+					this.nextElementSibling.classList.add('am-form-one__category-list_open')
+
+					// Автокомплит
+					const regExp = new RegExp(value)
+
+					variablesList.forEach(item => {
+						item.style.cssText = ''
+
+						if (!item.children[0].innerHTML.match(regExp)) {
+							item.style.display = 'none';
+						}
+					})
+				} else {
+					variablesList.forEach(item => {
+						item.style.cssText = ''
+					})
+				}
+			} catch (e) {
+				console.log(e)
 			}
 		})
 
@@ -109,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				if (item.querySelector('.am-form-one__category-desc')) {
 					valueSecond = item.querySelector('.am-form-one__category-desc').innerHTML
 				}
-				
+
 				if (valueSecond) {
 					value = valueFirst + ', ' + valueSecond;
 					inputName.value = valueFirst;
@@ -119,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				} else {
 					value = valueFirst;
 				}
-				
+
 				input.value = value;
 				input.dataset.category = dataCategory;
 				eventGenerate('change', input);
@@ -226,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 
 		document.querySelectorAll('input[name="specialist"]').forEach(input => {
-			input.addEventListener('change', function() {
+			input.addEventListener('change', function () {
 				const elem = this.closest('.am-form-one__specialists-item');
 				const price = elem.querySelector('.am-form-one__specialists-price').innerHTML;
 				const service = elem.querySelector('.am-form-one__specialists-service').innerHTML;
@@ -248,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				inputPrice.value = price;
 				eventGenerate('change', inputPrice);
 			}
-			input.addEventListener('change', function() {
+			input.addEventListener('change', function () {
 				const elem = this.closest('.am-form-one__services-item');
 				const price = elem.querySelector('.am-form-one__services-price').innerHTML;
 				const inputPrice = document.querySelector('.am-form-one__services input[name="price"]');

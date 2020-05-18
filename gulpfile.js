@@ -45,7 +45,6 @@ gulp.task('styles', function() {
 gulp.task('scripts', function() {
 	return gulp.src([
 		'app/js/src/_libs.js', // JS libraries (all in one)
-		'app/libs/datepicker/datepicker-full.min.js',
 		'app/js/_custom.js',
 		])
 	.pipe(concat('scripts.min.js'))	
